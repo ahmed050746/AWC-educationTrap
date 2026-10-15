@@ -2700,3 +2700,332 @@ button[type="submit"]:disabled {
     font-size: 12px;
   }
 }
+
+/* =============================================================================
+   MOBILE HERO — redesign
+   Scoped to #layout-mobile so it outranks the html.page-v2 overrides above.
+   ============================================================================= */
+#layout-mobile .m-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 28px 0 40px;
+  background: linear-gradient(180deg, var(--color-primary-mist) 0%, var(--color-bg-alt) 70%);
+}
+
+#layout-mobile .m-hero__decor {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+#layout-mobile .m-hero__blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(48px);
+  opacity: 0.55;
+  animation: m-hero-float 14s ease-in-out infinite alternate;
+}
+
+#layout-mobile .m-hero__blob--violet {
+  width: 260px;
+  height: 260px;
+  top: -90px;
+  left: -80px;
+  background: var(--color-primary-pale);
+}
+
+#layout-mobile .m-hero__blob--orange {
+  width: 220px;
+  height: 220px;
+  top: 120px;
+  right: -110px;
+  background: var(--color-secondary-soft);
+  animation-delay: -7s;
+}
+
+#layout-mobile .m-hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(var(--color-primary-rgb), 0.16) 1px, transparent 1px);
+  background-size: 18px 18px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 55% at 50% 20%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 55% at 50% 20%, #000 0%, transparent 75%);
+}
+
+#layout-mobile .m-hero__inner {
+  gap: 28px;
+}
+
+#layout-mobile .m-hero__content {
+  gap: 14px;
+}
+
+/* Hook pill — white glass with a violet → orange hairline border */
+#layout-mobile .m-hero__hook {
+  gap: 8px;
+  padding: 7px 14px 7px 12px;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-bg-alt), var(--color-bg-alt)) padding-box,
+    linear-gradient(90deg, var(--color-primary-light), var(--color-secondary-soft)) border-box;
+  box-shadow: 0 6px 18px -8px rgba(var(--color-primary-rgb), 0.35);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+#layout-mobile .m-hero__hook-dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  background: var(--color-secondary);
+}
+
+#layout-mobile .m-hero__hook-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--color-secondary);
+  animation: m-hero-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Heading */
+#layout-mobile .m-hero__title {
+  max-width: 100%;
+}
+
+#layout-mobile .m-hero__title-line {
+  font-size: clamp(30px, 9vw, 42px);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+#layout-mobile .m-hero__title-line--dark {
+  font-size: clamp(22px, 6.2vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-body);
+  margin-bottom: 2px;
+}
+
+#layout-mobile .m-hero__title-line--accent {
+  padding-bottom: 4px;
+  background: linear-gradient(100deg, var(--color-primary) 0%, var(--color-primary-mid) 55%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+#layout-mobile .m-hero__desc {
+  max-width: 320px;
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--color-text-body);
+  text-wrap: pretty;
+}
+
+/* Highlight chips */
+#layout-mobile .m-hero__chips {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+#layout-mobile .m-hero__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--color-border);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--color-text-body);
+}
+
+#layout-mobile .m-hero__chip::before {
+  content: "✓";
+  display: inline-grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+/* Video card */
+#layout-mobile .m-hero__video {
+  position: relative;
+  padding: 6px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.35), rgba(var(--color-secondary-rgb), 0.35));
+  box-shadow:
+    0 24px 48px -20px rgba(var(--color-primary-rgb), 0.45),
+    0 8px 16px -8px rgba(var(--color-text-rgb), 0.2);
+}
+
+#layout-mobile .m-hero__video .youtube-placeholder {
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--color-text);
+}
+
+#layout-mobile .m-hero__video .youtube-placeholder img {
+  transition: transform 0.5s ease;
+}
+
+#layout-mobile .m-hero__video .youtube-placeholder:hover img {
+  transform: scale(1.03);
+}
+
+#layout-mobile .m-hero__video-tag {
+  position: absolute;
+  top: -12px;
+  left: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 9999px;
+  background: var(--color-text);
+  color: var(--color-bg-alt);
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 14px -6px rgba(var(--color-text-rgb), 0.6);
+}
+
+#layout-mobile .m-hero__video-tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: #EF4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
+}
+
+/* Glass play button with a soft pulse ring */
+#layout-mobile .m-hero__video .play-button {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  padding-left: 4px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-primary);
+  font-size: 22px;
+  text-shadow: none;
+  box-shadow: 0 10px 30px -6px rgba(0, 0, 0, 0.45);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+#layout-mobile .m-hero__video .play-button::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: inherit;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  animation: m-hero-ring 2s ease-out infinite;
+}
+
+/* Social proof under the video */
+#layout-mobile .m-hero__proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 6px 6px;
+}
+
+#layout-mobile .m-hero__proof-avatars {
+  display: inline-flex;
+}
+
+#layout-mobile .m-hero__proof-avatars span {
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  border: 2px solid var(--color-bg-alt);
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+}
+
+#layout-mobile .m-hero__proof-avatars span + span {
+  margin-left: -8px;
+}
+
+#layout-mobile .m-hero__proof-avatars span:nth-child(2) {
+  background: linear-gradient(135deg, var(--color-secondary-soft), var(--color-secondary));
+}
+
+#layout-mobile .m-hero__proof-avatars span:nth-child(3) {
+  background: linear-gradient(135deg, var(--color-accent-soft), var(--color-accent));
+}
+
+#layout-mobile .m-hero__proof-text {
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--color-text-body);
+}
+
+#layout-mobile .m-hero__proof-text strong {
+  color: var(--color-text);
+  font-weight: 800;
+}
+
+@keyframes m-hero-float {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(24px, 18px, 0) scale(1.08); }
+}
+
+@keyframes m-hero-ping {
+  0%   { transform: scale(1); opacity: 0.7; }
+  80%, 100% { transform: scale(2.6); opacity: 0; }
+}
+
+@keyframes m-hero-ring {
+  0%   { transform: scale(0.9); opacity: 0.9; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+@media (max-width: 359px) {
+  #layout-mobile .m-hero {
+    padding-top: 20px;
+  }
+
+  #layout-mobile .m-hero__chip {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+
+  #layout-mobile .m-hero__video .play-button {
+    width: 54px;
+    height: 54px;
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #layout-mobile .m-hero__blob,
+  #layout-mobile .m-hero__hook-dot::after,
+  #layout-mobile .m-hero__video .play-button::after {
+    animation: none;
+  }
+}
